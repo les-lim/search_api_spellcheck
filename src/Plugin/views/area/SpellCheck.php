@@ -82,7 +82,7 @@ class SpellCheck extends AreaPluginBase {
     if ($this->options['search_api_spellcheck_hide_on_result'] == FALSE || ($this->options['search_api_spellcheck_hide_on_result'] && $empty)) {
       $result = $this->query->getSearchApiResults();
       // Check if extraData is there.
-      if ($extra_data = $result->getExtraData('search_api_solr_response')) {
+      if (!empty($result) && $extra_data = $result->getExtraData('search_api_solr_response')) {
         // Initialize our array.
         $suggestions = [];
         // Check that we have suggestions.
